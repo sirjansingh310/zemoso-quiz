@@ -7,25 +7,25 @@ import java.time.LocalDateTime;
 @Table(name = "inventory")
 public class Inventory {
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy =  GenerationType.AUTO)
     private Long id;
+
+    public Inventory() {
+    }
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
-    //private Employee employee;
+    private Employee employee;
 
-    @Column(name = "type")
+    @Column(name = "type",nullable = false)
     private String type;
 
-    @Column(name = "issued-at")
-    private LocalDateTime issedAt;
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -37,11 +37,12 @@ public class Inventory {
         this.type = type;
     }
 
-    public LocalDateTime getIssedAt() {
-        return issedAt;
+
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setIssedAt(LocalDateTime issedAt) {
-        this.issedAt = issedAt;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

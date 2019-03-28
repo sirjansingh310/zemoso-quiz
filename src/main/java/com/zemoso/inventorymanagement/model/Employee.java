@@ -2,21 +2,23 @@ package com.zemoso.inventorymanagement.model;
 
 
 import javax.persistence.*;
-import java.sql.Blob;
-
 //spring Model for the user
 
 @Entity
+@Table(name = "employee")
 public class Employee {
+
+    public Employee() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
-    @Column(nullable = false,unique = true)
+    @Column(name = "first_name", nullable = false)
     private String  firstName;
 
-    @Column(name = "type",nullable = false)
+    @Column(name = "last_name",nullable = false)
     private String lastName;
 
     //setter and getter methods of user details attributes
@@ -28,5 +30,19 @@ public class Employee {
         this.id = id;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 }
